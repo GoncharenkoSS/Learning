@@ -1,4 +1,4 @@
-package EXAMS;
+package For_example.EXAMS;
 
 import java.util.Comparator;
 

@@ -1,4 +1,4 @@
-package TS_enum;
+package For_example.TS_enum;
 
 import java.util.Scanner;
 

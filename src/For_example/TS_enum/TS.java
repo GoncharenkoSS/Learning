@@ -1,4 +1,4 @@
-package TS_enum;
+package For_example.TS_enum;
 
 public enum TS {
     OLGA("Власенко Ольга", "89615028809"),
