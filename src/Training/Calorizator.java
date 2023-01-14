@@ -15,14 +15,24 @@ private int Carbonitrates;
         Carbonitrates = carbonitrates;
     }
 
-    @Override
-    public String toString() {
-        return "Calorizator{" +
-                "name='" + name + '\'' +
-                ", Kkal=" + Kkal +
-                ", Proteins=" + Proteins +
-                ", Fats=" + Fats +
-                ", Carbonitrates=" + Carbonitrates +
-                '}' + "\n";
+    public String getName() {
+        return name;
     }
+
+    public int getKkal() {
+        return Kkal;
+    }
+
+    public int getProteins() {
+        return Proteins;
+    }
+
+    public int getFats() {
+        return Fats;
+    }
+
+    public int getCarbonitrates() {
+        return Carbonitrates;
+    }
+
 }

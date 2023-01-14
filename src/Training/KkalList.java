@@ -5,10 +5,74 @@ import java.util.*;
 public class KkalList {
     public static void main(String[] args) {
        List<Calorizator> list = new ArrayList<>();
-
        addElemebts(list);
-        System.out.println(list);
+
+        System.out.println("\n" + "Добрый день, вы вошли в программу \"Колоризатор\"" + "\n");
+
+        System.out.println("Для расчета индекса массы тела нажмите - \"1\"");
+        System.out.println("Для расчета оптимального потребления калорий нажмите- \"2\"");
+        System.out.println("Введите название продукта что узнать его энергетическую ценность");
+        System.out.println("Чтобы отсортировать продукты:\n" +
+                "По белкам - \"Б\"\n" +
+                "По жирам - \"Ж\"\n" +
+                "По углеводам - \"У\"\n");
+        Scanner scanner = new Scanner(System.in);
+        int digit = scanner.nextInt();
+        if(digit==1) IMT();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public static void IMT(){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Введите ваш вес и затем рост(после ввода нажмите \"Enter\")");
+    double w = sc.nextInt();
+    double h = sc.nextInt();
+    double x = w/(Math.pow((h/100), 2));
+    String imt="";
+    if(x<16) imt = "\"-Значительный дефецит массы тела\"";
+    if(x<19 && x>16) imt = "\"-Дефецит массы тела\"";
+    if(x<25 && x>19) imt = "\"-Норма\"";
+    if(x<30 && x>25) imt = "\"-Лишний вес\"";
+    if(x<35 && x>30) imt = "\"-Ожирение первой степени\"";
+    if(x<40 && x>35) imt = "\"-Ожирение второй степени\"";
+    if(x>40) imt = "\"-Ожирение третьей степени\"";
+    System.out.println("Ваш индекс массы тела " + Math.ceil(x) + "\n" + imt);
+    }
+
 
     private static void addElemebts(Collection collection) {
         collection.add(new Calorizator("Курица", 113, 23, 2, 0));
@@ -31,7 +95,5 @@ public class KkalList {
         collection.add(new Calorizator("Печень", 135, 19, 6, 0));
         collection.add(new Calorizator("Индейка", 84, 19, 1, 0));
         collection.add(new Calorizator("Шоколад", 544, 5, 35, 56));
-
-
     }
 }
