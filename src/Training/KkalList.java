@@ -7,18 +7,23 @@ public class KkalList {
        List<Calorizator> list = new ArrayList<>();
        addElemebts(list);
 
-        System.out.println("\n" + "Добрый день, вы вошли в программу \"Колоризатор\"" + "\n");
-
-        System.out.println("Для расчета индекса массы тела нажмите - \"1\"");
-        System.out.println("Для расчета оптимального потребления калорий нажмите- \"2\"");
-        System.out.println("Введите название продукта что узнать его энергетическую ценность");
-        System.out.println("Чтобы отсортировать продукты:\n" +
-                "По белкам - \"Б\"\n" +
-                "По жирам - \"Ж\"\n" +
-                "По углеводам - \"У\"\n");
+        System.out.println("\n" + "Добрый день!\nвы вошли в программу \"Колоризатор\"");
+        System.out.println(       "__________________________________\n");
+        System.out.println("- Для расчета индекса массы тела нажмите - \"1\"");
+        System.out.println("- Для расчета оптимального потребления калорий нажмите- \"2\"");
+        System.out.println("- Введите название продукта что узнать его энергетическую ценность");
+        System.out.println("- Чтобы отсортировать продукты:\n" +
+                "    - По белкам - \"Б\"\n" +
+                "    - По жирам - \"Ж\"\n" +
+                "    - По углеводам - \"У\"\n");
         Scanner scanner = new Scanner(System.in);
-        int digit = scanner.nextInt();
-        if(digit==1) IMT();
+        String digit = scanner.nextLine();
+        if(digit.equals("1")) IMT();
+        if(digit.equals("2")) BMR();
+        if(digit.length()>1) {
+            Calorizator str = new Calorizator(digit, 0,0,0,0);
+            if(list.contains(str)) System.out.println(1111111111);
+        }
     }
 
 
@@ -44,22 +49,31 @@ public class KkalList {
 
 
 
+public static void Product(){
 
+}
 
-
-
-
-
-
-
-
-
-
+public static void BMR(){
+    Scanner sc = new Scanner(System.in);
+    System.out.println("Введите ваш пол\n" +"1 - Женщина\n" + "2 - Мужчина");
+    int wc = sc.nextInt();
+    System.out.println("Введите ваш вес(кг) и нажмите \"Enter\")");
+    double w = sc.nextInt();
+    System.out.println("Введите ваш рост(см) и нажмите \"Enter\")");
+    double h = sc.nextInt();
+    System.out.println("Введите ваш возраст и нажмите \"Enter\")");
+    double y = sc.nextInt();
+    double bmr=0;
+    if(wc==2) bmr =88.36 + (13.4*w) + (4.8 * h)-(5.7*y);
+    if(wc==1) bmr =447.6 + (9.2*w) + (3.1 * h)-(4.3*y);
+    System.out.println("Ваша норма потребления каловий в сутки: " + Math.ceil(bmr) + " Kkal");
+}
 
 public static void IMT(){
     Scanner sc = new Scanner(System.in);
-    System.out.println("Введите ваш вес и затем рост(после ввода нажмите \"Enter\")");
+    System.out.println("Введите ваш вес(кг) и нажмите \"Enter\")");
     double w = sc.nextInt();
+    System.out.println("Введите ваш рост(см) и нажмите \"Enter\")");
     double h = sc.nextInt();
     double x = w/(Math.pow((h/100), 2));
     String imt="";
@@ -75,25 +89,26 @@ public static void IMT(){
 
 
     private static void addElemebts(Collection collection) {
-        collection.add(new Calorizator("Курица", 113, 23, 2, 0));
-        collection.add(new Calorizator("Банан", 95, 2, 0, 22));
-        collection.add(new Calorizator("Творог", 121, 17, 5, 2));
-        collection.add(new Calorizator("Макароны", 359, 14, 2, 70));
-        collection.add(new Calorizator("Гречка", 350, 13, 3, 68));
-        collection.add(new Calorizator("Ментай", 79, 18, 1, 0));
-        collection.add(new Calorizator("Сахар", 398, 0, 0, 100));
-        collection.add(new Calorizator("Хлеб", 242, 8, 1, 49));
-        collection.add(new Calorizator("Яблоко", 47, 1, 1, 10));
-        collection.add(new Calorizator("Майонез", 629, 3, 67, 4));
-        collection.add(new Calorizator("Киноа", 368, 14, 6, 57));
-        collection.add(new Calorizator("Горох", 298, 20, 2, 53));
-        collection.add(new Calorizator("Рис", 322, 7, 0, 71));
-        collection.add(new Calorizator("Молоко", 64, 3, 3, 5));
-        collection.add(new Calorizator("Сметана", 158, 3, 15, 3));
-        collection.add(new Calorizator("Мандарин", 33, 1, 0, 8));
-        collection.add(new Calorizator("Картофель", 76, 2, 0, 16));
-        collection.add(new Calorizator("Печень", 135, 19, 6, 0));
-        collection.add(new Calorizator("Индейка", 84, 19, 1, 0));
-        collection.add(new Calorizator("Шоколад", 544, 5, 35, 56));
+        collection.add(new Calorizator("курица", 113, 23, 2, 0));
+        collection.add(new Calorizator("банан", 95, 2, 0, 22));
+        collection.add(new Calorizator("творог", 121, 17, 5, 2));
+        collection.add(new Calorizator("макароны", 359, 14, 2, 70));
+        collection.add(new Calorizator("гречка", 350, 13, 3, 68));
+        collection.add(new Calorizator("ментай", 79, 18, 1, 0));
+        collection.add(new Calorizator("сахар", 398, 0, 0, 100));
+        collection.add(new Calorizator("хлеб", 242, 8, 1, 49));
+        collection.add(new Calorizator("яблоко", 47, 1, 1, 10));
+        collection.add(new Calorizator("майонез", 629, 3, 67, 4));
+        collection.add(new Calorizator("киноа", 368, 14, 6, 57));
+        collection.add(new Calorizator("горох", 298, 20, 2, 53));
+        collection.add(new Calorizator("рис", 322, 7, 0, 71));
+        collection.add(new Calorizator("молоко", 64, 3, 3, 5));
+        collection.add(new Calorizator("сметана", 158, 3, 15, 3));
+        collection.add(new Calorizator("мандарин", 33, 1, 0, 8));
+        collection.add(new Calorizator("картофель", 76, 2, 0, 16));
+        collection.add(new Calorizator("печень", 135, 19, 6, 0));
+        collection.add(new Calorizator("индейка", 84, 19, 1, 0));
+        collection.add(new Calorizator("шоколад", 544, 5, 35, 56));
     }
+
 }
