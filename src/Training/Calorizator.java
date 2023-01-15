@@ -49,4 +49,13 @@ private int Carbonitrates;
     public int hashCode() {
         return Objects.hash(name);
     }
+
+    @Override
+    public String toString() {
+        return "\n" + name.toUpperCase() + ":\n" +
+                "Калорийность - " + Kkal +
+                "; Белки - " + Proteins +
+                "; Жиры - " + Fats +
+                "; Углеводы - " + Carbonitrates;
+    }
 }

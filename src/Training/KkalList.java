@@ -9,20 +9,26 @@ public class KkalList {
 
         System.out.println("\n" + "Добрый день!\nвы вошли в программу \"Колоризатор\"");
         System.out.println(       "__________________________________\n");
-        System.out.println("- Для расчета индекса массы тела нажмите - \"1\"");
-        System.out.println("- Для расчета оптимального потребления калорий нажмите- \"2\"");
-        System.out.println("- Введите название продукта что узнать его энергетическую ценность");
-        System.out.println("- Чтобы отсортировать продукты:\n" +
-                "    - По белкам - \"Б\"\n" +
-                "    - По жирам - \"Ж\"\n" +
-                "    - По углеводам - \"У\"\n");
-        Scanner scanner = new Scanner(System.in);
-        String digit = scanner.nextLine();
-        if(digit.equals("1")) IMT();
-        if(digit.equals("2")) BMR();
-        if(digit.length()>1) {
-            Calorizator str = new Calorizator(digit, 0,0,0,0);
-            if(list.contains(str)) System.out.println(1111111111);
+        while (true) {
+            System.out.println("- Для расчета индекса массы тела нажмите - \"1\"");
+            System.out.println("- Для расчета оптимального потребления калорий нажмите- \"2\"");
+            System.out.println("- Введите название продукта что узнать его энергетическую ценность");
+            System.out.println("- Чтобы отсортировать продукты:\n" +
+                    "    - По белкам - \"Б\"\n" +
+                    "    - По жирам - \"Ж\"\n" +
+                    "    - По углеводам - \"У\"\n");
+            System.out.println("Введите \"EXIT\" для выхода");
+            Scanner scanner = new Scanner(System.in);
+            String digit = scanner.nextLine();
+            if (digit.equals("1")) IMT();
+            if (digit.equals("2")) BMR();
+            if (digit.length() > 1) {
+                Calorizator str = new Calorizator(digit, 0, 0, 0, 0);
+                int index = list.indexOf(str);
+                System.out.println(list.get(index));
+                System.out.println("_______________________________");
+            }
+            if (digit.toLowerCase().equals("exit")) break;
         }
     }
 
@@ -67,6 +73,7 @@ public static void BMR(){
     if(wc==2) bmr =88.36 + (13.4*w) + (4.8 * h)-(5.7*y);
     if(wc==1) bmr =447.6 + (9.2*w) + (3.1 * h)-(4.3*y);
     System.out.println("Ваша норма потребления каловий в сутки: " + Math.ceil(bmr) + " Kkal");
+    System.out.println("______________________________________________");
 }
 
 public static void IMT(){
@@ -85,6 +92,7 @@ public static void IMT(){
     if(x<40 && x>35) imt = "\"-Ожирение второй степени\"";
     if(x>40) imt = "\"-Ожирение третьей степени\"";
     System.out.println("Ваш индекс массы тела " + Math.ceil(x) + "\n" + imt);
+    System.out.println("_______________________________");
     }
 
 
