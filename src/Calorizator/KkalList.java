@@ -1,4 +1,4 @@
-package Training;
+package Calorizator;
 
 import java.util.*;
 
@@ -7,17 +7,18 @@ public class KkalList {
        List<Calorizator> list = new ArrayList<>();
        addElemebts(list);
 
-        System.out.println("\n" + "Добрый день!\nвы вошли в программу \"Колоризатор\"");
+        System.out.println("Добрый день!\nвы вошли в программу \"Колоризатор\"");
         System.out.println(       "__________________________________\n");
         while (true) {
             System.out.println("- Для расчета индекса массы тела нажмите - \"1\"");
             System.out.println("- Для расчета оптимального потребления калорий нажмите- \"2\"");
             System.out.println("- Введите название продукта что узнать его энергетическую ценность");
             System.out.println("- Чтобы отсортировать продукты:\n" +
-                    "    - По белкам - \"Б\"\n" +
-                    "    - По жирам - \"Ж\"\n" +
-                    "    - По углеводам - \"У\"\n");
-            System.out.println("Введите \"EXIT\" для выхода");
+                    "    - По калориям - \"3\"\n" +
+                    "    - По белкам - \"4\"\n" +
+                    "    - По жирам - \"5\"\n" +
+                    "    - По углеводам - \"6\"");
+            System.out.println("- Введите \"0\" для выхода");
             Scanner scanner = new Scanner(System.in);
             String digit = scanner.nextLine();
             if (digit.equals("1")) IMT();
@@ -25,39 +26,64 @@ public class KkalList {
             if (digit.length() > 1) {
                 Calorizator str = new Calorizator(digit, 0, 0, 0, 0);
                 int index = list.indexOf(str);
-                System.out.println(list.get(index));
+                try {
+                    System.out.println(list.get(index));
+                } catch (Exception e) {
+                    System.out.println("Такого продукта нет в списке");;
+                }
                 System.out.println("_______________________________");
             }
-            if (digit.toLowerCase().equals("exit")) break;
+            if(digit.equals("3")) {
+                list.sort(new Comparator<Calorizator>() {
+                    @Override
+                    public int compare(Calorizator o1, Calorizator o2) {
+                        return Integer.compare(o1.getKkal(), o2.getKkal());
+                    }
+                });
+                for (Calorizator i: list) {
+                    System.out.println(i);
+                }
+                System.out.println("_______________________________");
+            }
+            if(digit.equals("4")) {
+                list.sort(new Comparator<Calorizator>() {
+                    @Override
+                    public int compare(Calorizator o1, Calorizator o2) {
+                        return Integer.compare(o1.getProteins(), o2.getProteins());
+                    }
+                });
+                for (Calorizator i: list) {
+                    System.out.println(i);
+                }
+                System.out.println("_______________________________");
+            }
+            if(digit.equals("5")) {
+                list.sort(new Comparator<Calorizator>() {
+                    @Override
+                    public int compare(Calorizator o1, Calorizator o2) {
+                        return Integer.compare(o1.getFats(), o2.getFats());
+                    }
+                });
+                for (Calorizator i: list) {
+                    System.out.println(i);
+                }
+                System.out.println("_______________________________");
+            }
+            if(digit.equals("6")) {
+                list.sort(new Comparator<Calorizator>() {
+                    @Override
+                    public int compare(Calorizator o1, Calorizator o2) {
+                        return Integer.compare(o1.getCarbonitrates(), o2.getCarbonitrates());
+                    }
+                });
+                for (Calorizator i: list) {
+                    System.out.println(i);
+                }
+                System.out.println("_______________________________");
+            }
+            if (digit.equals("0")) break;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public static void Product(){
-
-}
 
 public static void BMR(){
     Scanner sc = new Scanner(System.in);
@@ -96,7 +122,7 @@ public static void IMT(){
     }
 
 
-    private static void addElemebts(Collection collection) {
+    private static void addElemebts(Collection<Calorizator> collection) {
         collection.add(new Calorizator("курица", 113, 23, 2, 0));
         collection.add(new Calorizator("банан", 95, 2, 0, 22));
         collection.add(new Calorizator("творог", 121, 17, 5, 2));

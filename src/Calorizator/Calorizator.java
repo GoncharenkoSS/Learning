@@ -1,4 +1,4 @@
-package Training;
+package Calorizator;
 
 import java.util.Objects;
 
@@ -58,4 +58,5 @@ private int Carbonitrates;
                 "; Жиры - " + Fats +
                 "; Углеводы - " + Carbonitrates;
     }
+
 }
