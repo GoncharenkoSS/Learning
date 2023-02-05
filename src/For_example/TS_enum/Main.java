@@ -7,15 +7,15 @@ public class Main {
         int a = 0, b =0;
         Scanner sc = new Scanner(System.in);
         while (true) {
-            System.out.println("РўР•Р›Р•Р¤РћРќРќР«Р™ РЎРџР РђР’РћР§РќРРљ");
-            System.out.println("     Р’РµРґРёС‚Рµ РРјСЏ:");
+            System.out.println("ТЕЛЕФОННЫЙ СПРАВОЧНИК");
+            System.out.println("     Ведите Имя:");
             String str = sc.nextLine().toUpperCase();
             if (str.equals("EXIT")) break;
             TS value = null;
             try {
                 value = TS.valueOf(str);
             } catch (IllegalArgumentException e) {
-                System.out.println("Р’РІРµРґРµРЅРѕ РЅРµРєРєРѕСЂРµРєС‚РЅРѕРµ Р·РЅР°С‡РµРЅРёРµ");
+                System.out.println("Введено неккоректное значение");
                 return;
             }
             for (TS elements : TS.values()) {
@@ -25,7 +25,7 @@ public class Main {
             TS ss = TS.values()[a];
             ss.GetData();
 
-            System.out.println("\nР’РµРґРёС‚Рµ EXIT РґР»СЏ РІС‹С…РѕРґР° \n");
+            System.out.println("\nВедите EXIT для выхода \n");
         }
     }
 }
