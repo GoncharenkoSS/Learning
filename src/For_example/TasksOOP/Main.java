@@ -1,4 +1,4 @@
-package For_example.EXAMS;
+package For_example.TasksOOP;
 import java.util.Scanner;
 import java.util.*;
 public class Main {
