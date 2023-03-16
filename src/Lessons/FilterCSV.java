@@ -42,7 +42,7 @@ public class FilterCSV {
             writer = new FileWriter("filter.csv", false);
 
             for (Items items : item) {
-                text = items.getName() + ";" + items.getSize() + ";" + items.getQuantity() + "\n";
+                text = items.name() + ";" + items.size() + ";" + items.quantity() + "\n";
                 writer.write(text);
             }
 
@@ -52,36 +52,15 @@ public class FilterCSV {
         }
     }
 
-    static class Items {
-        private String name;
-        private int size;
-        private int quantity;
-
-        public Items(String name, int size, int quantity) {
-            this.name = name;
-            this.size = size;
-            this.quantity = quantity;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getSize() {
-            return size;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
+    record Items(String name, int size, int quantity) {
 
         @Override
-        public String toString() {
-            return "\nItems: " + name + " " +
-                    "size: " + size + " " +
-                    "quantity: " + quantity;
+            public String toString() {
+                return "\nItems: " + name + " " +
+                        "size: " + size + " " +
+                        "quantity: " + quantity;
+            }
         }
-    }
 }
 
 
