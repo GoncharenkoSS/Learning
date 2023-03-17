@@ -1,4 +1,4 @@
-package For_example.IMPUT_FILE;
+package For_example.InputOutputFile;
 
 import java.io.*;
 

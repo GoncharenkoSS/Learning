@@ -1,4 +1,4 @@
-package For_example.Interface_Setter;
+package For_example.Interface;
 
 
 public class Courier implements Worker {
