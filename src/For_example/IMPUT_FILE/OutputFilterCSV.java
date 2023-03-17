@@ -1,11 +1,11 @@
-package Lessons;
+package For_example.IMPUT_FILE;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FilterCSV {
+public class OutputFilterCSV {
     public static void main(String[] args) {
         BufferedReader reader;
         FileInputStream fis;
