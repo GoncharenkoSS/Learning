@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 
 public class GameSnake {
     //game constants
@@ -13,9 +15,7 @@ public class GameSnake {
     final int POINT_RADIUS = 20; // in pix
     final int FILLED_WIDTH = 20; //in point
     final int FILLED_HEIGHT = 20; // in point
-    final int FILLED_DX = 5;
-    final int FILLED_DY = 5;
-    final int START_LOCATION = 200;
+    final int START_LOCATION = 300;
     final int START_SNAKE_SIZE = 6;
     final int START_SNAKE_X = 10;
     final int START_SNAKE_Y = 10;
@@ -25,7 +25,7 @@ public class GameSnake {
     final int RIGHT = 39;
     final int DOWN = 40;
     final int START_DIRECTION = RIGHT;
-    final Color DEFAULT_COLOR = Color.green;
+    final Color SNAKE_COLOR = Color.green;
     final Color FOOD_COLOR = Color.BLACK;
     final Color POISON_COLOR = Color.red;
     Snake snake;
@@ -35,6 +35,7 @@ public class GameSnake {
     Canvas canvasPanel;
     Random random = new Random();
     boolean gameOver = false;
+    boolean buttonClick = false;
 
 
     ///////////////////////////////////////////MAIN////////////////////////////////////////////////////////////
@@ -51,8 +52,8 @@ public class GameSnake {
 
     void go() {
         frame = new JFrame(TITLE_OF_PROGRAM + " : " + START_SNAKE_SIZE);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(FILLED_WIDTH * POINT_RADIUS + FILLED_DX, FILLED_HEIGHT * POINT_RADIUS + FILLED_DY);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setSize(FILLED_WIDTH * POINT_RADIUS+13, FILLED_HEIGHT * POINT_RADIUS+36);
         frame.setLocation(START_LOCATION, START_LOCATION);
         frame.setResizable(false);
 
@@ -207,7 +208,7 @@ public class GameSnake {
 
     class Point {
         int x, y;
-        Color color = DEFAULT_COLOR;
+        Color color = SNAKE_COLOR;
 
         public Point(int x, int y) {
             this.setXY(x, y);
@@ -240,15 +241,38 @@ public class GameSnake {
 
         @Override
         public void paint(Graphics q) {
+
+            JButton button = new JButton("Start game!");
+            frame.add(button);
+            button.setBounds(150,220,100,30);
+            button.setVisible(true);
+
+
+
             super.paint(q);
-            snake.paint(q);
-            food.paint(q);
-            if (gameOver) {
-                q.setColor(Color.red);
-                q.setFont(new Font("Arial", Font.BOLD, 38));
-                FontMetrics fm = q.getFontMetrics();
-                q.drawString(GAME_OVER_MSG, (FILLED_WIDTH * POINT_RADIUS + FILLED_DX - fm.stringWidth(GAME_OVER_MSG)) / 2,
-                        (FILLED_HEIGHT * POINT_RADIUS + FILLED_DY) / 2);
+            q.setColor(Color.green);
+            q.setFont(new Font("Arial", Font.BOLD, 38));
+            FontMetrics start = q.getFontMetrics();
+            q.drawString("SNAKE", (FILLED_WIDTH * POINT_RADIUS - start.stringWidth("SNAKE")) / 2,
+                    (FILLED_HEIGHT * POINT_RADIUS) / 2);
+
+            if (buttonClick == true) {
+                snake.paint(q);
+                food.paint(q);
+                q.setColor(Color.DARK_GRAY);
+                for (int i = 0; i < 400; i += 20) {
+                    for (int j = 0; j < 400; j += 20) {
+                        q.drawRect(i, j, POINT_RADIUS, POINT_RADIUS);
+                        q.drawRect(j, i, POINT_RADIUS, POINT_RADIUS);
+                    }
+                }
+                if (gameOver) {
+                    q.setColor(Color.red);
+                    q.setFont(new Font("Arial", Font.BOLD, 38));
+                    FontMetrics fm = q.getFontMetrics();
+                    q.drawString(GAME_OVER_MSG, (FILLED_WIDTH * POINT_RADIUS - fm.stringWidth(GAME_OVER_MSG)) / 2,
+                            (FILLED_HEIGHT * POINT_RADIUS) / 2);
+                }
             }
         }
     }
